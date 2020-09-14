@@ -4,10 +4,11 @@ def read_data (filename)
     return data
 end
 
-read_data('procesos.data')
+data = read_data('procesos.data')
 
 filtro = ARGV[0].to_i
 filtrados = data.select{|i| i > filtro}
+guarda_filtrados = filtrados.map{|i| i.to_s + "\n"}
 
-File.write('procesos_filtrados.data')
+File.write('procesos_filtrados.data', guarda_filtrados.join)
 
